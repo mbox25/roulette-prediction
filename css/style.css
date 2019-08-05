@@ -8,3 +8,43 @@ h1 {
     width: 100px;
     height: 30px;
 }
+#container {
+    margin: 10px auto;
+    padding: 20px;
+    border: 1px solid #bcbcbc;
+}
+#header {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #bcbcbc;
+}
+#content {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #bcbcbc;
+}
+#sidebar {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #bcbcbc;
+}
+#footer {
+    padding: 20px;
+    border: 1px solid #bcbcbc;
+}
+@media ( min-width: 481px ) {
+    #container {
+        width: 940px;
+    }
+    #content {
+        width: 580px;
+        float: left;
+    }
+    #sidebar {
+        width: 260px;
+        float: right;
+    }
+    #footer {
+        clear: both;
+    }
+}
