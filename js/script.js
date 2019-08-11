@@ -12,7 +12,7 @@ $(document).ready(function(){
         }
 
         numberInputHtml += '<div class="col">' + 
-                '<div><button type="button" class="btn btn-primary btn-lg" onclick="addNumber(' + i + ')">' + i + '</button></div>' + 
+                '<div><button type="button" class="btn btn-primary" onclick="addNumber(' + i + ')">' + i + '</button></div>' + 
                 '<div id="number-rate-1">0.0%</div>' + 
             '</div>';
 
@@ -20,6 +20,16 @@ $(document).ready(function(){
             numberInputHtml += '</div>';
         }
     }
+
+    numberInputHtml += '<div class="col">' + 
+            '<div><button type="button" class="btn btn-primary" onclick="addNumber(0)">0</button></div>' + 
+            '<div id="number-rate-1">0.0%</div>' + 
+        '</div>';
+    
+    numberInputHtml += '<div class="col">' + 
+            '<div><button type="button" class="btn btn-primary" onclick="addNumber(37)">00</button></div>' + 
+            '<div id="number-rate-1">0.0%</div>' + 
+        '</div>';
 
     $('#number-input').html(numberInputHtml);
 });
