@@ -1,10 +1,15 @@
 
-function test() {
-    alert('test');
-}
-
 $(document).ready(function(){
-    // init number input
+    reset();   
+});
+
+function reset() {
+    $('#history-text-area').val('');
+    $('#number-input').html('');
+    setNumberPrediction();
+    setOddEvenPrediction();
+    setBlackRedPrediction();
+
     var numberInputHtml = '';
     for(var i=1; i<=36; ++i) {
         if(1 == i % 5) {
@@ -31,8 +36,8 @@ $(document).ready(function(){
             '<div id="number-rate-37">2.63%</div>' + 
         '</div>';
 
-    $('#number-input').html(numberInputHtml);
-});
+    $('#number-input').html(numberInputHtml); 
+}
 
 function addNumber(number) {
     if(37 == number) {
@@ -103,8 +108,8 @@ function setOddEvenPrediction() {
     var evenRate = stdRate + (oddCount - evenCount) * 3.5;
     var oddRate = stdRate + (evenCount - oddCount) * 3.5;
 
-    $('#odd-rate').text(oddRate.toFixed(2) + '%');
-    $('#even-rate').text(evenRate.toFixed(2) + '%');
+    $('#odd-rate').text(oddRate.toFixed(1) + '%');
+    $('#even-rate').text(evenRate.toFixed(1) + '%');
 }
 
 function setBlackRedPrediction() {
@@ -139,6 +144,6 @@ function setBlackRedPrediction() {
     var blackRate = stdRate + (redCount - blackCount) * 5;
     var redRate = stdRate + (blackCount - redCount) * 5;
 
-    $('#black-rate').text(blackRate.toFixed(2) + '%');
-    $('#red-rate').text(redRate.toFixed(2) + '%');
+    $('#black-rate').text(blackRate.toFixed(1) + '%');
+    $('#red-rate').text(redRate.toFixed(1) + '%');
 }
