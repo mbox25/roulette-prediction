@@ -42,6 +42,7 @@ function addNumber(number) {
 
     setNumberPrediction();
     setOddEvenPrediction();
+    setBlackRedPrediction();
 }
 
 function setNumberPrediction() {
@@ -99,13 +100,45 @@ function setOddEvenPrediction() {
     }
 
     var stdRate = 18 / 38 * 100;
-    var evenRate = stdRate + (oddCount - evenCount) * 3;
-    var oddRate = stdRate + (evenCount - oddCount) * 3;
+    var evenRate = stdRate + (oddCount - evenCount) * 3.5;
+    var oddRate = stdRate + (evenCount - oddCount) * 3.5;
 
     $('#odd-rate').text(oddRate.toFixed(2) + '%');
     $('#even-rate').text(evenRate.toFixed(2) + '%');
 }
 
 function setBlackRedPrediction() {
+    var blackMap = {
+        2:0, 4:0, 6:0, 8:0, 10:0, 11:0, 13:0, 15:0, 17:0, 
+        20:0, 22:0, 24:0, 26:0, 28:0, 29:0, 31:0, 33:0, 35:0
+    };
+    // var redMap = {
+    //     1:0, 3:0, 5:0, 7:0, 9:0, 12:0, 14:0, 16:0, 18:0, 
+    //     19:0, 21:0, 23:0, 25:0, 27:0, 30:0, 32:0, 34:0, 36:0
+    // }
 
+    var historyData = $('#history-text-area').val();
+    var numberList = historyData.split(',');
+    var blackCount = 0;
+    var redCount = 0;
+    for(var i=0; i<numberList.length -1; ++i) {
+        var number = numberList[i];
+        if(0 == number || '00' == number) {
+            continue;
+        }
+
+        if(number in blackMap) {
+            ++blackCount;
+        }
+        else {
+            ++redCount;
+        }
+    }
+
+    var stdRate = 18 / 38 * 100;
+    var blackRate = stdRate + (redCount - blackCount) * 5;
+    var redRate = stdRate + (blackCount - redCount) * 5;
+
+    $('#black-rate').text(blackRate.toFixed(2) + '%');
+    $('#red-rate').text(redRate.toFixed(2) + '%');
 }
