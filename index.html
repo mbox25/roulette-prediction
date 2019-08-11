@@ -1,58 +1,44 @@
 <!DOCTYPE html>
-
-<meta charset="utf-8">
-<title> Roulette prediction </title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="stylesheet" href="./css/style.css">
-<script src="./js/script.js"></script>
+  <title>Roulette prediction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="./js/script.js"></script>
 
 <div id="container">
-    <div id="header">
-        <h1> Roulette prediction </h1>
+    <div class="row">
+      <h1> Roulette prediction </h1>  
     </div>
-    <div id="content">
-        <input class="button-normal" type="button" value="1" onclick="test()"/>
-        <input class="button-normal" type="button" value="2" onclick="test()"/>
-        <input class="button-normal" type="button" value="3" onclick="test()"/>
-        <input class="button-normal" type="button" value="4" onclick="test()"/>
-        <input class="button-normal" type="button" value="5" onclick="test()"/>
-        <input class="button-normal" type="button" value="6" onclick="test()"/>
-        <input class="button-normal" type="button" value="7" onclick="test()"/>
-        <input class="button-normal" type="button" value="8" onclick="test()"/>
-        <input class="button-normal" type="button" value="9" onclick="test()"/>
-        <input class="button-normal" type="button" value="10" onclick="test()"/>
-        <input class="button-normal" type="button" value="11" onclick="test()"/>
-        <input class="button-normal" type="button" value="12" onclick="test()"/>
-        <input class="button-normal" type="button" value="13" onclick="test()"/>
-        <input class="button-normal" type="button" value="14" onclick="test()"/>
-        <input class="button-normal" type="button" value="15" onclick="test()"/>
-        <input class="button-normal" type="button" value="16" onclick="test()"/>
-        <input class="button-normal" type="button" value="17" onclick="test()"/>
-        <input class="button-normal" type="button" value="18" onclick="test()"/>
-        <input class="button-normal" type="button" value="19" onclick="test()"/>
-        <input class="button-normal" type="button" value="20" onclick="test()"/>
-        <input class="button-normal" type="button" value="21" onclick="test()"/>
-        <input class="button-normal" type="button" value="22" onclick="test()"/>
-        <input class="button-normal" type="button" value="23" onclick="test()"/>
-        <input class="button-normal" type="button" value="24" onclick="test()"/>
-        <input class="button-normal" type="button" value="25" onclick="test()"/>
-        <input class="button-normal" type="button" value="26" onclick="test()"/>
-        <input class="button-normal" type="button" value="27" onclick="test()"/>
-        <input class="button-normal" type="button" value="28" onclick="test()"/>
-        <input class="button-normal" type="button" value="29" onclick="test()"/>
-        <input class="button-normal" type="button" value="30" onclick="test()"/>
-        <input class="button-normal" type="button" value="31" onclick="test()"/>
-        <input class="button-normal" type="button" value="32" onclick="test()"/>
-        <input class="button-normal" type="button" value="33" onclick="test()"/>
-        <input class="button-normal" type="button" value="34" onclick="test()"/>
-        <input class="button-normal" type="button" value="35" onclick="test()"/>
-        <input class="button-normal" type="button" value="36" onclick="test()"/>
+    <div clsss="row">
+      <div class="form-group purple-border">
+        <label for="history-text-area">Number history</label>
+        <textarea class="form-control" id="history-text-area" rows="3"></textarea>
+      </div>
     </div>
-    <div id="sidebar">  
+    <div clsss="row">
+      <div class="col-sm-4">
+          <label>BLACK:</label><label id="black-rate">47.36%</label>
+      </div>
+      <div class="col-sm-4">
+          <label>BLACK:</label><label id="black-rate">47.36%</label>
+      </div>
     </div>
-    <div id="footer">
+    <div clsss="row">
+      <label>RED:</label><label id="red-rate">47.36%</label>
     </div>
+    <div clsss="row">
+      <label>ODD:</label><label id="odd-rate">47.36%</label>
+    </div>
+    <div clsss="row">
+      <label>EVEN:</label><label id="even-rate">47.36%</label>
+    </div>
+    <div id="number-input"></div>
 </div>
 
 
