@@ -28,7 +28,7 @@ function reset() {
 
         numberInputHtml += '<div class="col">' + 
                 '<div><button type="button" class="btn ' + buttonColor +'" onclick="addNumber(' + i + ')">' + i + '</button></div>' + 
-                '<div id="number-rate-' + i + '">2.63%</div>' + 
+                '<div class="small text-dark" id="number-rate-' + i + '">2.63%</div>' + 
             '</div>';
 
         if(0 == i % 5) {
@@ -38,15 +38,24 @@ function reset() {
 
     numberInputHtml += '<div class="col">' + 
             '<div><button type="button" class="btn btn-success" onclick="addNumber(0)">0</button></div>' + 
-            '<div id="number-rate-0">2.63%</div>' + 
+            '<div class="small text-dark" id="number-rate-0">2.63%</div>' + 
         '</div>';
     
     numberInputHtml += '<div class="col">' + 
             '<div><button type="button" class="btn btn-success" onclick="addNumber(37)">00</button></div>' + 
-            '<div id="number-rate-37">2.63%</div>' + 
+            '<div class="small text-dark" id="number-rate-37">2.63%</div>' + 
         '</div>';
 
     $('#number-input').html(numberInputHtml); 
+}
+
+function undo() {
+
+    // $('#history-text-area').val($('#history-text-area').val().substr());
+
+    // setNumberPrediction();
+    // setOddEvenPrediction();
+    // setBlackRedPrediction();
 }
 
 function addNumber(number) {

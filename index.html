@@ -11,7 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="./js/script.js"></script>
 
-<div id="container">
+<div class="container">
   <h5 class="text-info">Roulette prediction</h5>
   <div clsss="row">
     <div class="form-group purple-border">
@@ -19,24 +19,24 @@
     </div>
   </div>
   <div class="row">
-    <div class="col"><label class="text-info">BLACK:</label><label class="text-info" id="black-rate"></label></div>
-    <div class="col"><label class="text-info">1~12:</label><label class="text-info" id="number-1to12-rate"></label></div>
-    <div class="col"><label class="text-info">1~18:</label><label class="text-info" id="number-1to18-rate"></label></div>
+    <div class="col"><label class="text-warning">BLACK:</label><label class="text-warning" id="black-rate"></label></div>
+    <div class="col"><label class="text-warning">1~12:</label><label class="text-warning" id="number-1to12-rate"></label></div>
+    <div class="col"><label class="text-warning">1~18:</label><label class="text-warning" id="number-1to18-rate"></label></div>
   </div>
   <div class="row">
-    <div class="col"><div><label class="text-info">RED:</label><label class="text-info" id="red-rate"></label></div></div>
-    <div class="col"><div><label class="text-info">13~24:</label><label class="text-info" id="number-13to24-rate"></label></div></div>
-    <div class="col"><div><label class="text-info">19~36:</label><label class="text-info" id="number-19to36-rate"></label></div></div>
+    <div class="col"><div><label class="text-warning">RED:</label><label class="text-warning" id="red-rate"></label></div></div>
+    <div class="col"><div><label class="text-warning">13~24:</label><label class="text-warning" id="number-13to24-rate"></label></div></div>
+    <div class="col"><div><label class="text-warning">19~36:</label><label class="text-warning" id="number-19to36-rate"></label></div></div>
   </div>
   <div class="row">
-      <div class="col"><label class="text-info">ODD:</label><label class="text-info" id="odd-rate"></label></div>
-      <div class="col"><label class="text-info">25~36:</label><label class="text-info" id="number-25to36-rate"></label></div>
+      <div class="col"><label class="text-warning">ODD:</label><label class="text-warning" id="odd-rate"></label></div>
+      <div class="col"><label class="text-warning">25~36:</label><label class="text-warning" id="number-25to36-rate"></label></div>
       <div class="col"></div>
   </div>
   <div class="row">
-      <div class="col"><label class="text-info">EVEN:</label><label class="text-info" id="even-rate"></label></div>
-      <div class="col"></div>
-      <div class="col"><button class="btn btn-warning" onclick="reset()">Reset</button></div>
+      <div class="col"><label class="text-warning">EVEN:</label><label class="text-warning" id="even-rate"></label></div>
+      <div class="col"><button class="btn btn-outline-secondary" onclick="undo()">Undo</button></div>
+      <div class="col"><button class="btn btn-outline-secondary" onclick="reset()">Reset</button></div>
   </div>
   <br/>
   <div id="number-input"></div>
