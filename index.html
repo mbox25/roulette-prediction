@@ -12,34 +12,31 @@
   <script src="./js/script.js"></script>
 
 <div id="container">
-  <div class="row">
-    <h1> Roulette prediction </h1>  
-  </div>
+  <h5 class="text-info">Roulette prediction</h5>
   <div clsss="row">
     <div class="form-group purple-border">
-      <label for="history-text-area">Number history</label>
-      <textarea class="form-control" id="history-text-area" rows="3"></textarea>
+      <textarea class="form-control" id="history-text-area" rows="3" placeholder="Number history"></textarea>
     </div>
   </div>
   <div class="row">
-    <div class="col"><label>BLACK:</label><label id="black-rate"></label></div>
-    <div class="col"><label>1~12:</label><label id="number-1to12-rate"></label></div>
-    <div class="col"><label>1~18:</label><label id="number-1to18-rate"></label></div>
+    <div class="col"><label class="text-info">BLACK:</label><label class="text-info" id="black-rate"></label></div>
+    <div class="col"><label class="text-info">1~12:</label><label class="text-info" id="number-1to12-rate"></label></div>
+    <div class="col"><label class="text-info">1~18:</label><label class="text-info" id="number-1to18-rate"></label></div>
   </div>
   <div class="row">
-    <div class="col"><div><label>RED:</label><label id="red-rate"></label></div></div>
-    <div class="col"><div><label>13~24:</label><label id="number-13to24-rate"></label></div></div>
-    <div class="col"><div><label>19~36:</label><label id="number-19to36-rate"></label></div></div>
+    <div class="col"><div><label class="text-info">RED:</label><label class="text-info" id="red-rate"></label></div></div>
+    <div class="col"><div><label class="text-info">13~24:</label><label class="text-info" id="number-13to24-rate"></label></div></div>
+    <div class="col"><div><label class="text-info">19~36:</label><label class="text-info" id="number-19to36-rate"></label></div></div>
   </div>
   <div class="row">
-      <div class="col"><label>ODD:</label><label id="odd-rate"></label></div>
-      <div class="col"><label>25~36:</label><label id="number-25to36-rate"></label></div>
+      <div class="col"><label class="text-info">ODD:</label><label class="text-info" id="odd-rate"></label></div>
+      <div class="col"><label class="text-info">25~36:</label><label class="text-info" id="number-25to36-rate"></label></div>
       <div class="col"></div>
   </div>
   <div class="row">
-      <div class="col"><label>EVEN:</label><label id="even-rate"></label></div>
+      <div class="col"><label class="text-info">EVEN:</label><label class="text-info" id="even-rate"></label></div>
       <div class="col"></div>
-      <div class="col"><button class="btn btn-secondary" onclick="reset()">Reset</button></div>
+      <div class="col"><button class="btn btn-warning" onclick="reset()">Reset</button></div>
   </div>
   <br/>
   <div id="number-input"></div>

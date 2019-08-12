@@ -3,6 +3,11 @@ $(document).ready(function(){
     reset();   
 });
 
+var blackMap = {
+    2:0, 4:0, 6:0, 8:0, 10:0, 11:0, 13:0, 15:0, 17:0, 
+    20:0, 22:0, 24:0, 26:0, 28:0, 29:0, 31:0, 33:0, 35:0
+};
+
 function reset() {
     $('#history-text-area').val('');
     $('#number-input').html('');
@@ -16,8 +21,13 @@ function reset() {
             numberInputHtml += '<div class="row">';
         }
 
+        var buttonColor = "btn-danger";
+        if(i in blackMap) {
+            buttonColor = "btn-dark"
+        }
+
         numberInputHtml += '<div class="col">' + 
-                '<div><button type="button" class="btn btn-primary" onclick="addNumber(' + i + ')">' + i + '</button></div>' + 
+                '<div><button type="button" class="btn ' + buttonColor +'" onclick="addNumber(' + i + ')">' + i + '</button></div>' + 
                 '<div id="number-rate-' + i + '">2.63%</div>' + 
             '</div>';
 
@@ -27,12 +37,12 @@ function reset() {
     }
 
     numberInputHtml += '<div class="col">' + 
-            '<div><button type="button" class="btn btn-primary" onclick="addNumber(0)">0</button></div>' + 
+            '<div><button type="button" class="btn btn-success" onclick="addNumber(0)">0</button></div>' + 
             '<div id="number-rate-0">2.63%</div>' + 
         '</div>';
     
     numberInputHtml += '<div class="col">' + 
-            '<div><button type="button" class="btn btn-primary" onclick="addNumber(37)">00</button></div>' + 
+            '<div><button type="button" class="btn btn-success" onclick="addNumber(37)">00</button></div>' + 
             '<div id="number-rate-37">2.63%</div>' + 
         '</div>';
 
@@ -43,7 +53,7 @@ function addNumber(number) {
     if(37 == number) {
         number = '00';  
     }
-    $('#history-text-area').val($('#history-text-area').val() + number + ',');
+    $('#history-text-area').val($('#history-text-area').val() + number + ' ');
 
     setNumberPrediction();
     setOddEvenPrediction();
@@ -52,7 +62,7 @@ function addNumber(number) {
 
 function setNumberPrediction() {
     var historyData = $('#history-text-area').val();
-    var numberList = historyData.split(',');
+    var numberList = historyData.split(' ');
     var numberCountMap = {};
     for(var i=0; i<numberList.length -1; ++i) {
         var number = numberList[i];
@@ -87,7 +97,7 @@ function setNumberPrediction() {
 
 function setOddEvenPrediction() {
     var historyData = $('#history-text-area').val();
-    var numberList = historyData.split(',');
+    var numberList = historyData.split(' ');
     var oddCount = 0;
     var evenCount = 0;
     for(var i=0; i<numberList.length -1; ++i) {
@@ -113,17 +123,13 @@ function setOddEvenPrediction() {
 }
 
 function setBlackRedPrediction() {
-    var blackMap = {
-        2:0, 4:0, 6:0, 8:0, 10:0, 11:0, 13:0, 15:0, 17:0, 
-        20:0, 22:0, 24:0, 26:0, 28:0, 29:0, 31:0, 33:0, 35:0
-    };
     // var redMap = {
     //     1:0, 3:0, 5:0, 7:0, 9:0, 12:0, 14:0, 16:0, 18:0, 
     //     19:0, 21:0, 23:0, 25:0, 27:0, 30:0, 32:0, 34:0, 36:0
     // }
 
     var historyData = $('#history-text-area').val();
-    var numberList = historyData.split(',');
+    var numberList = historyData.split(' ');
     var blackCount = 0;
     var redCount = 0;
     for(var i=0; i<numberList.length -1; ++i) {
