@@ -44,7 +44,7 @@ function reset() {
         }
     }
 
-    numberInputHtml += '<div class="col">' + 
+    numberInputHtml += '<div class="row"><div class="col"></div><div class="col">' + 
             '<div><button type="button" class="btn btn-success" onclick="addNumber(0)">0</button></div>' + 
             '<div class="small text-dark" id="number-rate-0">2.63%</div>' + 
         '</div>';
@@ -52,7 +52,7 @@ function reset() {
     numberInputHtml += '<div class="col">' + 
             '<div><button type="button" class="btn btn-success" onclick="addNumber(37)">00</button></div>' + 
             '<div class="small text-dark" id="number-rate-37">2.63%</div>' + 
-        '</div>';
+        '</div><div class="col"></div></div>';
 
     $('#number-input').html(numberInputHtml); 
 }
