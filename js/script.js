@@ -83,7 +83,7 @@ function undo() {
 }
 
 function addNumber(number) {
-    //vibrate();
+    vibrate();
 
     lastNumberList.push(number);
     lastNumberCountMap[number] = 25;
