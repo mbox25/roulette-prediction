@@ -65,7 +65,7 @@ function undo() {
     lastNumberCountMap[lastNumberList[lastNumberList.length - 1]] = -1;
     lastNumberList = lastNumberList.splice(0, lastNumberList.length - 1);
     var historyStr = '';
-    for(var i=0; i<lastNumberList.length; ++i) {
+    for(var i=0; i<lastNumberList.length-1; ++i) {
         var num = lastNumberList[i];
         if(37 == num) {
             historyStr += '00,';
@@ -73,6 +73,13 @@ function undo() {
         else {
             historyStr += num + ',';
         }
+    }
+    var num = lastNumberList[lastNumberList.length-1];
+    if(37 == num) {
+        historyStr += '00◀';
+    }
+    else {
+        historyStr += num + '◀';
     }
     $('#history-text-area').val(historyStr);
 
