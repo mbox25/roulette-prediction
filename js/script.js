@@ -152,8 +152,8 @@ function setOddEvenPrediction(newRate) {
         }
     }
 
-    $('#odd-rate').text(oddRate.toFixed(1) + '%');
-    $('#even-rate').text(evenRate.toFixed(1) + '%');
+    $('#odd-rate').text(' ' + oddRate.toFixed(1) + '%');
+    $('#even-rate').text(' ' + evenRate.toFixed(1) + '%');
 }
 
 function setBlackRedPrediction(newRate) {
@@ -178,8 +178,8 @@ function setBlackRedPrediction(newRate) {
         }
     }
 
-    $('#black-rate').text(blackRate.toFixed(1) + '%');
-    $('#red-rate').text(redRate.toFixed(1) + '%');
+    $('#black-rate').text(' ' + blackRate.toFixed(1) + '%');
+    $('#red-rate').text(' ' + redRate.toFixed(1) + '%');
 }
 
 function setNumber1to36Prediction(newRate) {
@@ -191,7 +191,7 @@ function setNumber1to36Prediction(newRate) {
 
         rate += newRate;
     }
-    $('#number-1to18-rate').text(rate.toFixed(1) + '%');
+    $('#number-1to18-rate').text(' ' + rate.toFixed(1) + '%');
 
     rate = 0;
     for(var i=19; i<=36; ++i) {
@@ -201,7 +201,7 @@ function setNumber1to36Prediction(newRate) {
 
         rate += newRate;
     }
-    $('#number-19to36-rate').text(rate.toFixed(1) + '%');
+    $('#number-19to36-rate').text(' ' + rate.toFixed(1) + '%');
 
     rate = 0;
     for(var i=1; i<=12; ++i) {
@@ -211,7 +211,7 @@ function setNumber1to36Prediction(newRate) {
 
         rate += newRate;
     }
-    $('#number-1to12-rate').text(rate.toFixed(1) + '%');
+    $('#number-1to12-rate').text(' ' + rate.toFixed(1) + '%');
 
     rate = 0;
     for(var i=13; i<=24; ++i) {
@@ -221,7 +221,7 @@ function setNumber1to36Prediction(newRate) {
 
         rate += newRate;
     }
-    $('#number-13to24-rate').text(rate.toFixed(1) + '%');
+    $('#number-13to24-rate').text(' ' + rate.toFixed(1) + '%');
 
     rate = 0;
     for(var i=25; i<=36; ++i) {
@@ -231,7 +231,7 @@ function setNumber1to36Prediction(newRate) {
 
         rate += newRate;
     }
-    $('#number-25to36-rate').text(rate.toFixed(1) + '%');
+    $('#number-25to36-rate').text(' ' + rate.toFixed(1) + '%');
 }
 
 
