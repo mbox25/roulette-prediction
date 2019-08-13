@@ -64,24 +64,7 @@ function undo() {
 
     lastNumberCountMap[lastNumberList[lastNumberList.length - 1]] = -1;
     lastNumberList = lastNumberList.splice(0, lastNumberList.length - 1);
-    var historyStr = '';
-    for(var i=0; i<lastNumberList.length-1; ++i) {
-        var num = lastNumberList[i];
-        if(37 == num) {
-            historyStr += '00,';
-        }
-        else {
-            historyStr += num + ',';
-        }
-    }
-    var num = lastNumberList[lastNumberList.length-1];
-    if(37 == num) {
-        historyStr += '00◀';
-    }
-    else {
-        historyStr += num + '◀';
-    }
-    $('#history-text-area').val(historyStr);
+    displayNumber();
 
     var newRate = setNumberPrediction();
     setOddEvenPrediction(newRate);
@@ -89,23 +72,38 @@ function undo() {
     setNumber1to36Prediction(newRate);
 }
 
+function displayNumber() {
+    var historyStr = '';
+    if(0 != lastNumberList.length) {
+        for(var i=0; i<lastNumberList.length-1; ++i) {
+            var num = lastNumberList[i];
+            if(37 == num) {
+                historyStr += '00,';
+            }
+            else {
+                historyStr += num + ',';
+            }
+        }
+        var num = lastNumberList[lastNumberList.length-1];
+        if(37 == num) {
+            historyStr += '00◀';
+        }
+        else {
+            historyStr += num + '◀';
+        }
+    }
+    $('#history-text-area').val(historyStr);
+}
+
 function addNumber(number) {
     vibrate();
 
     lastNumberList.push(number);
     lastNumberCountMap[number] = 25;
-
-    var historyStr = '';
-    for(var i=0; i<lastNumberList.length; ++i) {
-        var num = lastNumberList[i];
-        if(37 == num) {
-            historyStr += '00,';
-        }
-        else {
-            historyStr += num + ',';
-        }
+    if(38 < lastNumberList.length) {
+        lastNumberList = lastNumberList.splice(1, lastNumberList.length - 1);
     }
-    $('#history-text-area').val(historyStr);
+    displayNumber();
     
     var newRate = setNumberPrediction();
     setOddEvenPrediction(newRate);
