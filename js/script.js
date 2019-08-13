@@ -63,10 +63,21 @@ function addNumber(number) {
         number = '00';  
     }
     $('#history-text-area').val($('#history-text-area').val() + number + ' ');
-
+    vibrate();
+    
     setNumberPrediction();
     setOddEvenPrediction();
     setBlackRedPrediction();
+}
+
+navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+function vibrate() {
+    if (navigator.vibrate) {
+        navigator.vibrate(300);
+    }
+    else {
+        alert("진동을 지원하지 않는 기종 입니다.");
+    }
 }
 
 function setNumberPrediction() {
