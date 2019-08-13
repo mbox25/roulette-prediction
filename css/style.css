@@ -10,5 +10,13 @@
 }
 
 label {
-    font-size: 85%;
+    font-size: 100%;
+}
+
+#static .row {
+    border: 0.1px solid;
+}
+
+#static .col {
+    border: 0.1px solid;
 }

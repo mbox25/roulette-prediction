@@ -25,7 +25,7 @@ function reset() {
 
     var numberInputHtml = '';
     for(var i=1; i<=36; ++i) {
-        if(1 == i % 5) {
+        if(1 == i % 3) {
             numberInputHtml += '<div class="row">';
         }
 
@@ -39,7 +39,7 @@ function reset() {
                 '<div class="small text-dark" id="number-rate-' + i + '">2.63%</div>' + 
             '</div>';
 
-        if(0 == i % 5) {
+        if(0 == i % 3) {
             numberInputHtml += '</div>';
         }
     }
