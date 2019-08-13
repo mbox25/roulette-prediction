@@ -73,7 +73,7 @@ function addNumber(number) {
 navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
 function vibrate() {
     if (navigator.vibrate) {
-        navigator.vibrate(300);
+        navigator.vibrate(100);
     }
     else {
         alert("진동을 지원하지 않는 기종 입니다.");
