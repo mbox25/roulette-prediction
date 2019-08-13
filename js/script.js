@@ -109,7 +109,7 @@ function addNumber(number) {
 navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
 function vibrate() {
     if (navigator.vibrate) {
-        navigator.vibrate(50);
+        navigator.vibrate(10);
     }
 }
 
