@@ -26,7 +26,7 @@ function reset() {
     var numberInputHtml = '';
     for(var i=1; i<=36; ++i) {
         if(1 == i % 3) {
-            numberInputHtml += '<div class="row">';
+            numberInputHtml += '<div class="row"><div class="col"></div>';
         }
 
         var buttonColor = "btn-danger";
@@ -40,7 +40,7 @@ function reset() {
             '</div>';
 
         if(0 == i % 3) {
-            numberInputHtml += '</div>';
+            numberInputHtml += '<div class="col"></div></div>';
         }
     }
 
