@@ -8,13 +8,15 @@
 }
 
 label {
-    font-size: 85%;
+    font-size: 100%;
 }
 
 #static .row {
-    border: 0.1px solid;
+    margin-left: 5px;
+    /*border: 0.1px solid;*/
 }
 
-#static .col {
-    border: 0.1px solid;
+button {
+    padding: 0;
+    margin: 0;
 }

@@ -15,39 +15,59 @@
   <h5 class="text-info">Roulette prediction</h5>
   <div clsss="row">
     <div class="form-group purple-border">
-      <textarea readonly class="form-control" id="history-text-area" rows="3" placeholder="Number history"></textarea>
+      <textarea readonly class="form-control" id="history-text-area" rows="2" placeholder="Number history"></textarea>
     </div>
   </div>
-  <div id="static">
-    <div class="row">
-      <div class="col">
-        <div><label class="text-warning">BLACK:&nbsp</label><label class="text-warning" id="black-rate"></label></div>
+  <div class="row" id="main-contents">
+    <div class="col-4" id="static">
+      <div class="row">
+        <label class="text-warning">BLACK:&nbsp</label><label class="text-warning" id="black-rate"></label>
+      </div>
+      <div class="row">
         <label class="text-warning">RED:&nbsp</label><label class="text-warning" id="red-rate"></label>
       </div>
-      <div class="col">
-          <div><label class="text-warning">ODD:&nbsp</label><label class="text-warning" id="odd-rate"></label></div>
+      <div class="row">
+        <label class="text-warning">ODD:&nbsp</label><label class="text-warning" id="odd-rate"></label>
+      </div>
+      <div class="row">
         <label class="text-warning">EVEN:&nbsp</label><label class="text-warning" id="even-rate"></label>
       </div>
-      <div class="col">
-          <div><label class="text-warning">1~18:&nbsp</label><label class="text-warning" id="number-1to18-rate"></label></div>
+      <div class="row">
+        <label class="text-warning">1~18:&nbsp</label><label class="text-warning" id="number-1to18-rate"></label>
+      </div>
+      <div class="row">
         <label class="text-warning">19~36:&nbsp</label><label class="text-warning" id="number-19to36-rate"></label>
       </div>
+      <div class="row">
+        <label class="text-warning">1~12:&nbsp</label><label class="text-warning" id="number-1to12-rate"></label>
+      </div>
+      <div class="row">
+        <label class="text-warning">13~24:&nbsp</label><label class="text-warning" id="number-13to24-rate"></label>
+      </div>
+      <div class="row">
+        <label class="text-warning">25~36:&nbsp</label><label class="text-warning" id="number-25to36-rate"></label>
+      </div>
+      <br/>
+      <div class="row">
+        <button class="btn btn-outline-secondary btn-sm" onclick="undo()">Undo</button>
+      </div>
+      <br/>
+      <div class="row">
+        <button class="btn btn-outline-secondary btn-sm" onclick="reset()">Reset</button>
+      </div>
+      <br/>
+      <div class="row">
+        <button class="btn btn-outline-secondary btn-sm" onclick="changeGameType()">Europe</button>
+      </div>
+      <br/>
+      <div class="row">
+        <button class="btn btn-outline-secondary btn-sm" onclick="">↔</button>
+      </div>
     </div>
-    <div class="row">
-      <div class="col"><label class="text-warning">1~12:&nbsp</label><label class="text-warning" id="number-1to12-rate"></label></div>
-      <div class="col"><label class="text-warning">13~24:&nbsp</label><label class="text-warning" id="number-13to24-rate"></label></div>
-      <div class="col"><label class="text-warning">25~36:&nbsp</label><label class="text-warning" id="number-25to36-rate"></label></div>   
+    <div class="col-8">
+      <div id="number-input"></div>
     </div>
   </div>
-  <br/>
-  <div id="number-input"></div>
-  <br/>
-  <div class="row">
-    <div class="col"><button class="btn btn-outline-secondary btn-sm" onclick="">↔</button></div>
-    <div class="col"><button class="btn btn-outline-secondary btn-sm" onclick="changeGameType()">Europe</button></div>
-    <div class="col"><button class="btn btn-outline-secondary btn-sm" onclick="undo()">Undo</button></div>
-    <div class="col"><button class="btn btn-outline-secondary btn-sm" onclick="reset()">Reset</button></div>
-</div>
 </div>
 
 
