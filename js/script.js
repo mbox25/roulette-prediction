@@ -11,6 +11,10 @@ var blackMap = {
     20:0, 22:0, 24:0, 26:0, 28:0, 29:0, 31:0, 33:0, 35:0
 };
 
+var zeroMap = {
+    0:0, 37:0
+}
+
 function reset() {
     lastNumberList = [];
     lastNumberCountMap = {};
@@ -29,13 +33,13 @@ function reset() {
             numberInputHtml += '<div class="row">';
         }
 
-        var buttonColor = "btn-danger";
+        var buttonColor = "btn-outline-danger";
         if(i in blackMap) {
-            buttonColor = "btn-dark"
+            buttonColor = "btn-outline-light"
         }
 
         numberInputHtml += '<div class="col">' + 
-                '<div><button type="button" class="btn ' + buttonColor +'" onclick="addNumber(' + i + ')">' + i + '</button></div>' + 
+                '<div><button type="button" class="btn ' + buttonColor +'" id="number-button-' + i + '" onclick="addNumber(' + i + ')">' + i + '</button></div>' + 
                 '<div class="small text-dark" id="number-rate-' + i + '">2.63%</div>' + 
             '</div>';
 
@@ -45,12 +49,12 @@ function reset() {
     }
 
     numberInputHtml += '<div class="row"><div class="col"></div><div class="col">' + 
-            '<div><button type="button" class="btn btn-success" onclick="addNumber(0)">0</button></div>' + 
+            '<div><button type="button" class="btn btn-outline-success" id="number-button-0" onclick="addNumber(0)">0</button></div>' + 
             '<div class="small text-dark" id="number-rate-0">2.63%</div>' + 
         '</div>';
     
     numberInputHtml += '<div class="col">' + 
-            '<div><button type="button" class="btn btn-success" onclick="addNumber(37)">00</button></div>' + 
+            '<div><button type="button" class="btn btn-outline-success" id="number-button-37" onclick="addNumber(37)">00</button></div>' + 
             '<div class="small text-dark" id="number-rate-37">2.63%</div>' + 
         '</div><div class="col"></div></div>';
 
@@ -134,6 +138,35 @@ function setNumberPrediction() {
             rate = 0;
         }
 
+        if(5 < rate) {
+            if(i in blackMap) {
+                $('#number-button-' + i).removeClass('btn btn-outline-light');
+                $('#number-button-' + i).addClass('btn btn-dark');
+            }
+            else if(i in zeroMap) {
+                $('#number-button-' + i).removeClass('btn btn-outline-success');
+                $('#number-button-' + i).addClass('btn btn-success');
+            } 
+            else {
+                $('#number-button-' + i).removeClass('btn btn-outline-danger');
+                $('#number-button-' + i).addClass('btn btn-danger');
+            }
+        }
+        else {
+            if(i in blackMap) {
+                $('#number-button-' + i).removeClass('btn btn-dark');
+                $('#number-button-' + i).addClass('btn btn-outline-light');
+            }
+            else if(i in zeroMap) {
+                $('#number-button-' + i).removeClass('btn btn-success');
+                $('#number-button-' + i).addClass('btn btn-outline-success');    
+            } 
+            else {
+                $('#number-button-' + i).removeClass('btn btn-danger');
+                $('#number-button-' + i).addClass('btn btn-outline-danger');
+            }
+        }
+
         $('#number-rate-' + i).text(rate.toFixed(2) + '%');
     }
 
@@ -155,6 +188,20 @@ function setOddEvenPrediction(newRate) {
         else {
             oddRate += newRate;
         }
+    }
+
+    if(50 < oddRate) {
+        $('#odd-rate').css('background-color', 'red');
+    }
+    else {
+        $('#odd-rate').css('background-color', 'black');
+    }
+
+    if(50 < evenRate) {
+        $('#even-rate').css('background-color', 'red');
+    }
+    else {
+        $('#even-rate').css('background-color', 'black');
     }
 
     $('#odd-rate').text(oddRate.toFixed(1) + '%');
@@ -183,6 +230,20 @@ function setBlackRedPrediction(newRate) {
         }
     }
 
+    if(50 < blackRate) {
+        $('#black-rate').css('background-color', 'red');
+    }
+    else {
+        $('#black-rate').css('background-color', 'black');
+    }
+
+    if(50 < redRate) {
+        $('#red-rate').css('background-color', 'red');
+    }
+    else {
+        $('#red-rate').css('background-color', 'black');
+    }
+
     $('#black-rate').text(blackRate.toFixed(1) + '%');
     $('#red-rate').text(redRate.toFixed(1) + '%');
 }
@@ -198,6 +259,13 @@ function setNumber1to36Prediction(newRate) {
     }
     $('#number-1to18-rate').text(rate.toFixed(1) + '%');
 
+    if(50 < rate) {
+        $('#number-1to18-rate').css('background-color', 'red');
+    }
+    else {
+        $('#number-1to18-rate').css('background-color', 'black');
+    }
+
     rate = 0;
     for(var i=19; i<=36; ++i) {
         if(0 < lastNumberCountMap[i]) {
@@ -207,6 +275,13 @@ function setNumber1to36Prediction(newRate) {
         rate += newRate;
     }
     $('#number-19to36-rate').text(rate.toFixed(1) + '%');
+
+    if(50 < rate) {
+        $('#number-19to36-rate').css('background-color', 'red');
+    }
+    else {
+        $('#number-19to36-rate').css('background-color', 'black');
+    }
 
     rate = 0;
     for(var i=1; i<=12; ++i) {
@@ -218,6 +293,13 @@ function setNumber1to36Prediction(newRate) {
     }
     $('#number-1to12-rate').text(rate.toFixed(1) + '%');
 
+    if(40 < rate) {
+        $('#number-1to12-rate').css('background-color', 'red');
+    }
+    else {
+        $('#number-1to12-rate').css('background-color', 'black');
+    }
+
     rate = 0;
     for(var i=13; i<=24; ++i) {
         if(0 < lastNumberCountMap[i]) {
@@ -228,6 +310,13 @@ function setNumber1to36Prediction(newRate) {
     }
     $('#number-13to24-rate').text(rate.toFixed(1) + '%');
 
+    if(40 < rate) {
+        $('#number-13to24-rate').css('background-color', 'red');
+    }
+    else {
+        $('#number-13to24-rate').css('background-color', 'black');
+    }
+
     rate = 0;
     for(var i=25; i<=36; ++i) {
         if(0 < lastNumberCountMap[i]) {
@@ -237,6 +326,13 @@ function setNumber1to36Prediction(newRate) {
         rate += newRate;
     }
     $('#number-25to36-rate').text(rate.toFixed(1) + '%');
+
+    if(40 < rate) {
+        $('#number-25to36-rate').css('background-color', 'red');
+    }
+    else {
+        $('#number-25to36-rate').css('background-color', 'black');
+    }
 }
 
 
