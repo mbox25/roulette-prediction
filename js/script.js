@@ -5,6 +5,7 @@ $(document).ready(function(){
 
 var lastNumberList = [];
 var lastNumberCountMap = {};
+var numberRateMap = {};
 
 var blackMap = {
     2:0, 4:0, 6:0, 8:0, 10:0, 11:0, 13:0, 15:0, 17:0, 
@@ -101,18 +102,19 @@ function displayNumber() {
 
 function addNumber(number) {
     vibrate();
+    $('#history-text-area').focus();
 
     lastNumberList.push(number);
-    lastNumberCountMap[number] = 25;
+    lastNumberCountMap[number] = 38;
     if(38 < lastNumberList.length) {
         lastNumberList = lastNumberList.splice(1, lastNumberList.length - 1);
     }
     displayNumber();
     
-    var newRate = setNumberPrediction();
-    setOddEvenPrediction(newRate);
-    setBlackRedPrediction(newRate);
-    setNumber1to36Prediction(newRate);
+    setNumberPrediction();
+    setOddEvenPrediction();
+    setBlackRedPrediction();
+    setNumber1to36Prediction();
 }
 
 navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
@@ -123,20 +125,26 @@ function vibrate() {
 }
 
 function setNumberPrediction() {
+    var preRate = 0;
     var count = 0;
     for(var key in lastNumberCountMap) {
         --lastNumberCountMap[key];
         if(0 < lastNumberCountMap[key]) {
+            var currRate = (38 - lastNumberCountMap[key]) * (100 / 38) / 38;
+            numberRateMap[key] = currRate;
+            preRate += currRate;
             ++count;
         }
     }
 
-    var newRate = 100 / (38 - count);
+    var newRate = (100 - preRate) / (38 - count);
     for(var i=0; i<38; ++i) {
         var rate = newRate;
         if(0 < lastNumberCountMap[i]) {
-            rate = 0;
+            rate = numberRateMap[i];
         }
+
+        numberRateMap[i] = rate;
 
         if(4.5 < rate) {
             if(i in blackMap) {
@@ -169,24 +177,17 @@ function setNumberPrediction() {
 
         $('#number-rate-' + i).text(rate.toFixed(2) + '%');
     }
-
-    return newRate;
 }
 
-function setOddEvenPrediction(newRate) {
+function setOddEvenPrediction() {
     var oddRate = 0;
     var evenRate = 0;
     for(var i=1; i<=36; ++i) {
-        var rate = newRate;
-        if(0 < lastNumberCountMap[i]) {
-            continue;
-        }
-
         if(0 == i % 2) {
-            evenRate += newRate;
+            evenRate += numberRateMap[i];
         } 
         else {
-            oddRate += newRate;
+            oddRate += numberRateMap[i];
         }
     }
 
@@ -208,7 +209,7 @@ function setOddEvenPrediction(newRate) {
     $('#even-rate').text(evenRate.toFixed(1) + '%');
 }
 
-function setBlackRedPrediction(newRate) {
+function setBlackRedPrediction() {
     // var redMap = {
     //     1:0, 3:0, 5:0, 7:0, 9:0, 12:0, 14:0, 16:0, 18:0, 
     //     19:0, 21:0, 23:0, 25:0, 27:0, 30:0, 32:0, 34:0, 36:0
@@ -217,16 +218,11 @@ function setBlackRedPrediction(newRate) {
     var blackRate = 0;
     var redRate = 0;
     for(var i=1; i<=36; ++i) {
-        var rate = newRate;
-        if(0 < lastNumberCountMap[i]) {
-            continue;
-        }
-
         if(i in blackMap) {
-            blackRate += newRate;
+            blackRate += numberRateMap[i];
         } 
         else {
-            redRate += newRate;
+            redRate += numberRateMap[i];
         }
     }
 
@@ -248,14 +244,10 @@ function setBlackRedPrediction(newRate) {
     $('#red-rate').text(redRate.toFixed(1) + '%');
 }
 
-function setNumber1to36Prediction(newRate) {
+function setNumber1to36Prediction() {
     var rate = 0;
     for(var i=1; i<=18; ++i) {
-        if(0 < lastNumberCountMap[i]) {
-            continue;
-        }
-
-        rate += newRate;
+        rate += numberRateMap[i];
     }
     $('#number-1to18-rate').text(rate.toFixed(1) + '%');
 
@@ -268,11 +260,7 @@ function setNumber1to36Prediction(newRate) {
 
     rate = 0;
     for(var i=19; i<=36; ++i) {
-        if(0 < lastNumberCountMap[i]) {
-            continue;
-        }
-
-        rate += newRate;
+        rate += numberRateMap[i];
     }
     $('#number-19to36-rate').text(rate.toFixed(1) + '%');
 
@@ -285,11 +273,7 @@ function setNumber1to36Prediction(newRate) {
 
     rate = 0;
     for(var i=1; i<=12; ++i) {
-        if(0 < lastNumberCountMap[i]) {
-            continue;
-        }
-
-        rate += newRate;
+        rate += numberRateMap[i];
     }
     $('#number-1to12-rate').text(rate.toFixed(1) + '%');
 
@@ -302,11 +286,7 @@ function setNumber1to36Prediction(newRate) {
 
     rate = 0;
     for(var i=13; i<=24; ++i) {
-        if(0 < lastNumberCountMap[i]) {
-            continue;
-        }
-
-        rate += newRate;
+        rate += numberRateMap[i];
     }
     $('#number-13to24-rate').text(rate.toFixed(1) + '%');
 
@@ -319,11 +299,7 @@ function setNumber1to36Prediction(newRate) {
 
     rate = 0;
     for(var i=25; i<=36; ++i) {
-        if(0 < lastNumberCountMap[i]) {
-            continue;
-        }
-
-        rate += newRate;
+        rate += numberRateMap[i];
     }
     $('#number-25to36-rate').text(rate.toFixed(1) + '%');
 
