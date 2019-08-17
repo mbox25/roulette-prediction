@@ -138,7 +138,7 @@ function setNumberPrediction() {
             rate = 0;
         }
 
-        if(5 < rate) {
+        if(4.5 < rate) {
             if(i in blackMap) {
                 $('#number-button-' + i).removeClass('btn btn-outline-light');
                 $('#number-button-' + i).addClass('btn btn-dark');
